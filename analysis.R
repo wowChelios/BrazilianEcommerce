@@ -110,6 +110,7 @@ final_order = joined_order %>%
                         product_category == "home_appliances_2" ~ "home_appliances",
                         product_category == "home_comfort_2" ~ "home_comfort",
                         product_category == "home_confort" ~ "home_comfort",
+                        product_category == "fashio_female_clothing" ~ "fashion_female_clothing",
                         product_category == "art" ~ "arts_and_craftmanship",
                         product_category == "drinks" |
                                 product_category == "food" ~ "food_drink",

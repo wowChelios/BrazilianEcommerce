@@ -10,9 +10,9 @@ ui <- fluidPage(
                                         "Charlie Wang"
                                 ),
                                 sidebarMenu(
-                                        menuItem("Geographical Analysis", tabName = "geo", icon = icon("map")),
-                                        menuItem("Time Analysis", tabName = "time", icon = icon("calendar-alt")),
-                                        menuItem("Categorical Analysis", tabName = "cat", icon = icon("box")),
+                                        menuItem("Geographic", tabName = "geo", icon = icon("map")),
+                                        menuItem("Trends", tabName = "time", icon = icon("calendar-alt")),
+                                        menuItem("Categories", tabName = "cat", icon = icon("box")),
                                         menuItem("Data", tabName = "dat", icon = icon("database"))
                                 )
                         ),
@@ -43,7 +43,14 @@ ui <- fluidPage(
                                         tabItem(
                                                 tabName = "cat",
                                                 fluidRow(
-                                                        box(htmlOutput("cat"),
+                                                        box(pickerInput(inputId = "cats", 
+                                                                        label = "Select Categories to Show", 
+                                                                        choices = cats_choices, selected = cats_choices,
+                                                                        options = list(`actions-box` = TRUE), 
+                                                                        multiple = TRUE),
+                                                            selectInput("catvalue", "Select Value to Show", 
+                                                                        choices = catvalue_choices, selected = "total_sales"),
+                                                            htmlOutput("cat"),
                                                             width = "auto",
                                                             height = "800")
                                                 )
@@ -63,6 +70,8 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
         bins = reactiveValues()
+        labtxt = reactiveValues()
+
         
 # Filtering date range input
         time_df1 = reactive({
@@ -73,11 +82,31 @@ server <- function(input, output, session) {
 
         })
         
+        cat_df1 = reactive({
+                req(input$catvalue)
+                cat_df %>%
+                        filter(product_category %in% input$cats) %>%
+                        select(product_category, input$catvalue)
+                        
+        })
+        
+        
         observe({
-                if (input$geoin != "sales") {
+                if (input$geoin == "sales") {
+                        labtxt$x = "<strong>%s</strong><br/><strong>Sales:</strong> $%g BRL"
+                        bins$y = c(0, 50000, 100000, 200000, 300000, 400000, 1000000, 2000000, 5000000, Inf)
+                } else if (input$geoin == "avg_shcsratio") {
+                        labtxt$x = "<strong>%s</strong><br/><strong>Ratio:</strong> %g"
+                        bins$y = 9
+                } else if (input$geoin == "avg_review") {
+                        labtxt$x = "<strong>%s</strong><br/><strong>Score:</strong> %g"
+                        bins$y = 9
+                } else if (input$geoin %in% c("avg_delidays", "avg_diffestdel")) {
+                        labtxt$x = "<strong>%s</strong><br/>%g Days"
                         bins$y = 9
                 } else {
-                        bins$y = c(0, 100000, 200000, 300000, 400000, 1000000, 2000000, 5000000, Inf)
+                        labtxt$x = "<strong>%s</strong><br/>$%g BRL" 
+                        bins$y = 9
                 }
                 
 
@@ -87,7 +116,7 @@ server <- function(input, output, session) {
         output$geo = renderLeaflet({
                 pal = colorBin("Greens",geo_df[,input$geoin], bins = bins$y, pretty = F)
                 labels = sprintf(
-                        "<strong>%s</strong><br/><strong>Revenue:</strong> $%g BRL",
+                        labtxt$x,
                         states$nome, geo_df[,input$geoin]
                 ) %>% lapply(htmltools::HTML)
                 
@@ -119,17 +148,18 @@ server <- function(input, output, session) {
 # Time analysis
         output$tim = renderGvis({
                 gvisLineChart(time_df1(), options = list(
-                        width = "auto", height = "600px"
+                        width = "automatic", height = "600px", legend = "none", vAxis = "{title: 'Sales (in $BRL)', format: 'short'}",
+                        hAxis = "{title: 'Date', format: 'MMM d, y'}"
                 ))
         })
 
 
 # Categorical analysis
         output$cat = renderGvis(
-                gvisBarChart(cat_df[,1:2], options = list(
-                        width = "auto", height = "800px", bar = "{groupWidth: '80%'}",
+                gvisBarChart(cat_df1(), options = list(
+                        width = "automatic", height = "800", bar = "{groupWidth: '80%'}",
                         hAxis = "{title:'Sales', format: 'short', scaleType: 'log'}", 
-                        animation = "{startup: true}"
+                        animation = "{startup: true}", legend = "none"
                 ))
         )
 

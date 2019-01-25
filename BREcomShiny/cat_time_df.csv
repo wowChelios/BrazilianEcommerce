@@ -30,7 +30,7 @@
 2016-10-05,"computers_accessories",196.76
 2016-10-05,"consoles_games",661.75
 2016-10-05,"electronics",1227.78
-2016-10-05,"fashio_female_clothing",69.63
+2016-10-05,"fashion_female_clothing",69.63
 2016-10-05,"fashion_male_clothing",35.86
 2016-10-05,"fixed_telephony",161.65
 2016-10-05,"furniture_decor",1150.84
@@ -311,8 +311,8 @@
 2017-01-24,"computers_accessories",113.86
 2017-01-24,"consoles_games",896.6
 2017-01-24,"cool_stuff",186.49
-2017-01-24,"fashio_female_clothing",33.36
 2017-01-24,"fashion_bags_accessories",91.07
+2017-01-24,"fashion_female_clothing",33.36
 2017-01-24,"furniture_decor",416.56
 2017-01-24,"garden_tools",248.68
 2017-01-24,"health_beauty",963.88
@@ -326,8 +326,8 @@
 2017-01-25,"computers_accessories",120.36
 2017-01-25,"consoles_games",239.64
 2017-01-25,"cool_stuff",2170.61
-2017-01-25,"fashio_female_clothing",69.45
 2017-01-25,"fashion_bags_accessories",285.7
+2017-01-25,"fashion_female_clothing",69.45
 2017-01-25,"fixed_telephony",23.93
 2017-01-25,"furniture_decor",846.96
 2017-01-25,"garden_tools",386.41
@@ -675,7 +675,7 @@
 2017-02-10,"computers_accessories",4204.36
 2017-02-10,"consoles_games",332.7
 2017-02-10,"cool_stuff",572.25
-2017-02-10,"fashio_female_clothing",134
+2017-02-10,"fashion_female_clothing",134
 2017-02-10,"fashion_male_clothing",71.71
 2017-02-10,"furniture_decor",460.76
 2017-02-10,"garden_tools",1270.42
@@ -767,8 +767,8 @@
 2017-02-14,"computers_accessories",1385.38
 2017-02-14,"cool_stuff",678.4
 2017-02-14,"electronics",458.32
-2017-02-14,"fashio_female_clothing",149.09
 2017-02-14,"fashion_bags_accessories",55.75
+2017-02-14,"fashion_female_clothing",149.09
 2017-02-14,"fashion_male_clothing",89.88
 2017-02-14,"fixed_telephony",144.21
 2017-02-14,"furniture_decor",1467.35
@@ -996,7 +996,7 @@
 2017-02-25,"computers_accessories",50.8
 2017-02-25,"consoles_games",210.03
 2017-02-25,"cool_stuff",233.25
-2017-02-25,"fashio_female_clothing",105.17
+2017-02-25,"fashion_female_clothing",105.17
 2017-02-25,"fashion_male_clothing",128.52
 2017-02-25,"fixed_telephony",34.51
 2017-02-25,"food_drink",36.77
@@ -1014,8 +1014,8 @@
 2017-02-26,"bed_bath_table",206.22
 2017-02-26,"computers_accessories",30.96
 2017-02-26,"consoles_games",73.58
-2017-02-26,"fashio_female_clothing",131.51
 2017-02-26,"fashion_bags_accessories",150.12
+2017-02-26,"fashion_female_clothing",131.51
 2017-02-26,"furniture_decor",1200.73
 2017-02-26,"garden_tools",50.86
 2017-02-26,"health_beauty",323.37
@@ -1399,8 +1399,8 @@
 2017-03-14,"consoles_games",400.27
 2017-03-14,"cool_stuff",1476.35
 2017-03-14,"electronics",134.48
-2017-03-14,"fashio_female_clothing",30.86
 2017-03-14,"fashion_bags_accessories",114.86
+2017-03-14,"fashion_female_clothing",30.86
 2017-03-14,"fixed_telephony",74.59
 2017-03-14,"food_drink",132.34
 2017-03-14,"furniture_decor",981.76
@@ -2145,7 +2145,7 @@
 2017-04-13,"consoles_games",82.02
 2017-04-13,"cool_stuff",259.72
 2017-04-13,"costruction_tools_tools",748.27
-2017-04-13,"fashio_female_clothing",171.69
+2017-04-13,"fashion_female_clothing",171.69
 2017-04-13,"fashion_shoes",145.57
 2017-04-13,"fashion_sport",171.69
 2017-04-13,"food_drink",112.27
@@ -2751,8 +2751,8 @@
 2017-05-07,"computers_accessories",1864.83
 2017-05-07,"cool_stuff",870.97
 2017-05-07,"electronics",156.14
-2017-05-07,"fashio_female_clothing",70.03
 2017-05-07,"fashion_bags_accessories",179.48
+2017-05-07,"fashion_female_clothing",70.03
 2017-05-07,"food_drink",220.4
 2017-05-07,"furniture_decor",1637.43
 2017-05-07,"furniture_living_room",55.18
@@ -2968,8 +2968,8 @@
 2017-05-15,"cool_stuff",1052.31
 2017-05-15,"dvds_blu_ray",37.53
 2017-05-15,"electronics",220.6
-2017-05-15,"fashio_female_clothing",322.74
 2017-05-15,"fashion_bags_accessories",30.26
+2017-05-15,"fashion_female_clothing",322.74
 2017-05-15,"fashion_shoes",45
 2017-05-15,"food_drink",174.17
 2017-05-15,"furniture_bedroom",1784.78
@@ -3000,8 +3000,8 @@
 2017-05-16,"consoles_games",174.81
 2017-05-16,"cool_stuff",2074.02
 2017-05-16,"electronics",47.27
-2017-05-16,"fashio_female_clothing",62.68
 2017-05-16,"fashion_bags_accessories",717.01
+2017-05-16,"fashion_female_clothing",62.68
 2017-05-16,"fashion_shoes",51
 2017-05-16,"food_drink",132.17
 2017-05-16,"furniture_decor",1647.84
@@ -3089,8 +3089,8 @@
 2017-05-19,"cool_stuff",2467.6
 2017-05-19,"dvds_blu_ray",28.01
 2017-05-19,"electronics",766.96
-2017-05-19,"fashio_female_clothing",30.18
 2017-05-19,"fashion_bags_accessories",378.21
+2017-05-19,"fashion_female_clothing",30.18
 2017-05-19,"fashion_male_clothing",970.1
 2017-05-19,"fashion_underwear_beach",79.71
 2017-05-19,"furniture_bedroom",130.76
@@ -3672,8 +3672,8 @@
 2017-06-10,"bed_bath_table",569.89
 2017-06-10,"computers_accessories",440.33
 2017-06-10,"consoles_games",147.15
-2017-06-10,"fashio_female_clothing",39
 2017-06-10,"fashion_bags_accessories",74.14
+2017-06-10,"fashion_female_clothing",39
 2017-06-10,"fashion_shoes",85.34
 2017-06-10,"furniture_decor",290.21
 2017-06-10,"furniture_living_room",397.09
@@ -3701,8 +3701,8 @@
 2017-06-11,"books_general_interest",152.09
 2017-06-11,"computers_accessories",677.17
 2017-06-11,"cool_stuff",1456.37
-2017-06-11,"fashio_female_clothing",80.2
 2017-06-11,"fashion_bags_accessories",307.69
+2017-06-11,"fashion_female_clothing",80.2
 2017-06-11,"fashion_shoes",45.69
 2017-06-11,"food_drink",124.3
 2017-06-11,"furniture_decor",428.41
@@ -3789,8 +3789,8 @@
 2017-06-14,"construction_tools_construction",55.02
 2017-06-14,"cool_stuff",1259.56
 2017-06-14,"electronics",45
-2017-06-14,"fashio_female_clothing",80.1
 2017-06-14,"fashion_bags_accessories",1005.72
+2017-06-14,"fashion_female_clothing",80.1
 2017-06-14,"fashion_male_clothing",77.89
 2017-06-14,"fashion_shoes",143.41
 2017-06-14,"furniture_bedroom",102.12
@@ -4234,8 +4234,8 @@
 2017-07-02,"cool_stuff",1657.8
 2017-07-02,"costruction_tools_garden",92.67
 2017-07-02,"electronics",201.54
-2017-07-02,"fashio_female_clothing",58.94
 2017-07-02,"fashion_bags_accessories",97.94
+2017-07-02,"fashion_female_clothing",58.94
 2017-07-02,"furniture_decor",1317.04
 2017-07-02,"furniture_living_room",160.79
 2017-07-02,"garden_tools",55
@@ -4677,8 +4677,8 @@
 2017-07-18,"cool_stuff",1600.09
 2017-07-18,"costruction_tools_garden",101.05
 2017-07-18,"electronics",1255.61
-2017-07-18,"fashio_female_clothing",78.7
 2017-07-18,"fashion_bags_accessories",306.46
+2017-07-18,"fashion_female_clothing",78.7
 2017-07-18,"fashion_shoes",50
 2017-07-18,"fixed_telephony",37.62
 2017-07-18,"furniture_decor",1399.82
@@ -4901,8 +4901,8 @@
 2017-07-26,"cool_stuff",202.38
 2017-07-26,"costruction_tools_garden",49.76
 2017-07-26,"electronics",23.38
-2017-07-26,"fashio_female_clothing",78.7
 2017-07-26,"fashion_bags_accessories",38.71
+2017-07-26,"fashion_female_clothing",78.7
 2017-07-26,"fixed_telephony",35.09
 2017-07-26,"furniture_bedroom",118.1
 2017-07-26,"furniture_decor",1331.73
@@ -5043,8 +5043,8 @@
 2017-07-31,"consoles_games",806.12
 2017-07-31,"cool_stuff",891.4
 2017-07-31,"electronics",395.13
-2017-07-31,"fashio_female_clothing",148.06
 2017-07-31,"fashion_bags_accessories",286.16
+2017-07-31,"fashion_female_clothing",148.06
 2017-07-31,"fashion_shoes",41.69
 2017-07-31,"furniture_decor",1200.68
 2017-07-31,"furniture_living_room",95.21
@@ -5162,8 +5162,8 @@
 2017-08-04,"consoles_games",467.77
 2017-08-04,"cool_stuff",857.63
 2017-08-04,"electronics",169.82
-2017-08-04,"fashio_female_clothing",58.94
 2017-08-04,"fashion_bags_accessories",1064.51
+2017-08-04,"fashion_female_clothing",58.94
 2017-08-04,"fashion_shoes",187.43
 2017-08-04,"furniture_decor",1713.57
 2017-08-04,"furniture_living_room",286.47
@@ -5331,8 +5331,8 @@
 2017-08-10,"computers_accessories",1386.63
 2017-08-10,"cool_stuff",1667.62
 2017-08-10,"electronics",197.68
-2017-08-10,"fashio_female_clothing",72.68
 2017-08-10,"fashion_bags_accessories",63.1
+2017-08-10,"fashion_female_clothing",72.68
 2017-08-10,"fashion_underwear_beach",178.34
 2017-08-10,"furniture_decor",601.92
 2017-08-10,"garden_tools",1116.92
@@ -5544,8 +5544,8 @@
 2017-08-17,"cool_stuff",2057.03
 2017-08-17,"dvds_blu_ray",32.5
 2017-08-17,"electronics",261.03
-2017-08-17,"fashio_female_clothing",104.03
 2017-08-17,"fashion_bags_accessories",241.53
+2017-08-17,"fashion_female_clothing",104.03
 2017-08-17,"fashion_male_clothing",310.62
 2017-08-17,"fixed_telephony",701.69
 2017-08-17,"furniture_decor",1485.4
@@ -6031,8 +6031,8 @@
 2017-09-03,"cool_stuff",3321.36
 2017-09-03,"costruction_tools_garden",75.07
 2017-09-03,"electronics",277.84
-2017-09-03,"fashio_female_clothing",62.1
 2017-09-03,"fashion_bags_accessories",797.48
+2017-09-03,"fashion_female_clothing",62.1
 2017-09-03,"fixed_telephony",31.09
 2017-09-03,"furniture_decor",603.59
 2017-09-03,"garden_tools",749.71
@@ -6433,8 +6433,8 @@
 2017-09-17,"computers",2783.16
 2017-09-17,"computers_accessories",497.86
 2017-09-17,"cool_stuff",1865.91
-2017-09-17,"fashio_female_clothing",152.16
 2017-09-17,"fashion_bags_accessories",347.19
+2017-09-17,"fashion_female_clothing",152.16
 2017-09-17,"food_drink",200.24
 2017-09-17,"furniture_decor",1019.76
 2017-09-17,"furniture_living_room",80.12
@@ -6464,8 +6464,8 @@
 2017-09-18,"construction_tools_safety",452.98
 2017-09-18,"cool_stuff",1670.6
 2017-09-18,"electronics",129.17
-2017-09-18,"fashio_female_clothing",216.05
 2017-09-18,"fashion_bags_accessories",150.4
+2017-09-18,"fashion_female_clothing",216.05
 2017-09-18,"fashion_shoes",45.69
 2017-09-18,"fashion_underwear_beach",71.82
 2017-09-18,"food_drink",73.13
@@ -8087,8 +8087,8 @@
 2017-11-13,"cool_stuff",2276.64
 2017-11-13,"costruction_tools_garden",104.17
 2017-11-13,"electronics",217.29
-2017-11-13,"fashio_female_clothing",63.5
 2017-11-13,"fashion_bags_accessories",831.99
+2017-11-13,"fashion_female_clothing",63.5
 2017-11-13,"fashion_shoes",102.74
 2017-11-13,"food_drink",228.45
 2017-11-13,"furniture_decor",1768.64
@@ -8526,8 +8526,8 @@
 2017-11-26,"cool_stuff",1409.6
 2017-11-26,"costruction_tools_garden",525.85
 2017-11-26,"electronics",253.69
-2017-11-26,"fashio_female_clothing",45.09
 2017-11-26,"fashion_bags_accessories",994.64
+2017-11-26,"fashion_female_clothing",45.09
 2017-11-26,"fashion_male_clothing",76.08
 2017-11-26,"fashion_shoes",197.02
 2017-11-26,"food_drink",143.06
@@ -8644,8 +8644,8 @@
 2017-11-29,"construction_tools_construction",191.23
 2017-11-29,"cool_stuff",1208.81
 2017-11-29,"electronics",1414.57
-2017-11-29,"fashio_female_clothing",39.08
 2017-11-29,"fashion_bags_accessories",799.2
+2017-11-29,"fashion_female_clothing",39.08
 2017-11-29,"fashion_shoes",273.7
 2017-11-29,"fashion_underwear_beach",267.74
 2017-11-29,"food_drink",219
@@ -10140,8 +10140,8 @@
 2018-01-15,"cool_stuff",2704.7
 2018-01-15,"costruction_tools_tools",208.48
 2018-01-15,"electronics",1412.66
-2018-01-15,"fashio_female_clothing",78.7
 2018-01-15,"fashion_bags_accessories",425.19
+2018-01-15,"fashion_female_clothing",78.7
 2018-01-15,"fixed_telephony",41.14
 2018-01-15,"food_drink",145.31
 2018-01-15,"furniture_decor",4435.05
@@ -10381,8 +10381,8 @@
 2018-01-22,"cool_stuff",1336.42
 2018-01-22,"costruction_tools_garden",568.3
 2018-01-22,"electronics",551.47
-2018-01-22,"fashio_female_clothing",39.08
 2018-01-22,"fashion_bags_accessories",627.39
+2018-01-22,"fashion_female_clothing",39.08
 2018-01-22,"fixed_telephony",32.09
 2018-01-22,"food_drink",57.78
 2018-01-22,"furniture_decor",1805.37
@@ -10683,8 +10683,8 @@
 2018-01-31,"construction_tools_construction",1003.39
 2018-01-31,"cool_stuff",1065.79
 2018-01-31,"electronics",570.94
-2018-01-31,"fashio_female_clothing",78.7
 2018-01-31,"fashion_bags_accessories",599.08
+2018-01-31,"fashion_female_clothing",78.7
 2018-01-31,"fashion_male_clothing",72.66
 2018-01-31,"furniture_decor",1552.67
 2018-01-31,"garden_tools",452.67
@@ -11166,8 +11166,8 @@
 2018-02-14,"construction_tools_lights",1062.96
 2018-02-14,"cool_stuff",822.08
 2018-02-14,"electronics",833.84
-2018-02-14,"fashio_female_clothing",45.09
 2018-02-14,"fashion_bags_accessories",346.89
+2018-02-14,"fashion_female_clothing",45.09
 2018-02-14,"fixed_telephony",38.14
 2018-02-14,"food_drink",376.52
 2018-02-14,"furniture_decor",3120.03
@@ -12386,9 +12386,9 @@
 2018-03-21,"cool_stuff",2573.2
 2018-03-21,"costruction_tools_tools",50.23
 2018-03-21,"electronics",953.57
-2018-03-21,"fashio_female_clothing",154.52
 2018-03-21,"fashion_bags_accessories",947.49
 2018-03-21,"fashion_childrens_clothes",106.43
+2018-03-21,"fashion_female_clothing",154.52
 2018-03-21,"fixed_telephony",553.52
 2018-03-21,"furniture_bedroom",127.15
 2018-03-21,"furniture_decor",2449.77
@@ -13731,8 +13731,8 @@
 2018-04-27,"cool_stuff",1085
 2018-04-27,"costruction_tools_garden",280.08
 2018-04-27,"electronics",447.81
-2018-04-27,"fashio_female_clothing",218.15
 2018-04-27,"fashion_bags_accessories",1161.04
+2018-04-27,"fashion_female_clothing",218.15
 2018-04-27,"fixed_telephony",410.84
 2018-04-27,"food_drink",362.52
 2018-04-27,"furniture_decor",3062.08
@@ -17327,8 +17327,8 @@
 2018-08-07,"cool_stuff",2151.7
 2018-08-07,"costruction_tools_garden",428.04
 2018-08-07,"electronics",1188.8
-2018-08-07,"fashio_female_clothing",57.17
 2018-08-07,"fashion_bags_accessories",351.77
+2018-08-07,"fashion_female_clothing",57.17
 2018-08-07,"fashion_shoes",245.05
 2018-08-07,"fixed_telephony",119.32
 2018-08-07,"food_drink",528.67
@@ -17886,8 +17886,8 @@
 2018-08-22,"costruction_tools_garden",82.16
 2018-08-22,"costruction_tools_tools",67.67
 2018-08-22,"electronics",370.22
-2018-08-22,"fashio_female_clothing",223.92
 2018-08-22,"fashion_bags_accessories",286.55
+2018-08-22,"fashion_female_clothing",223.92
 2018-08-22,"food_drink",317.3
 2018-08-22,"furniture_decor",772.95
 2018-08-22,"garden_tools",454.6
