@@ -1,13 +1,13 @@
 getwd()
 setwd('..')
-setwd('Desktop/Qifanworkspace/R/BrazilianEcommerce')
+setwd('../Desktop/Qifanworkspace/R/BrazilianEcommerce')
 library(tidyverse)
 library(googleVis)
 library(leaflet)
 library(maps)
 library(datasets)
 install.packages("geojsonio")
-states <- geojsonio::geojson_read("json/br-states.json", what = "sp")
+states = geojsonio::geojson_read("json/br-states.json", what = "sp")
 names(states)
 reviews = read.csv('brazilian-ecommerce/olist_order_reviews_dataset.csv', stringsAsFactors = F)
 payments = read.csv('brazilian-ecommerce/olist_order_payments_dataset.csv', stringsAsFactors = F)
@@ -142,6 +142,8 @@ s1 = o3 %>%
                   avg_review = round(mean(review_score), 3),
                   avg_diffestdel = round(mean(diff_estdel),2))
 
+write.csv(s1, file = "gdf.csv", row.names = F)
+
 # Generating analysis by time
 t1 = o3 %>%
         na.omit(purchase_date) %>%
@@ -180,7 +182,7 @@ plot(c)
 
 
 #Plotting attempt
-m <- leaflet(states) %>%
+m = leaflet(states) %>%
         addTiles()
 
 m %>% addPolygons()
