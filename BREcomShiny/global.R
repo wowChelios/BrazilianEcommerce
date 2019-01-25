@@ -1,3 +1,4 @@
+setwd('~/Desktop/QifanWorkspace/R/BrazilianEcommerce/BREcomShiny')
 library(shiny)
 library(shinydashboard)
 library(tidyverse)
@@ -7,19 +8,15 @@ library(googleVis)
 library(maps)
 library(geojsonio)
 library(RColorBrewer)
+library(stats)
 
 # loading dfs
-geodf = read.csv("gdf.csv", stringsAsFactors = F)
+geo_df = read.csv("geo_df.csv", stringsAsFactors = F)
 states = geojsonio::geojson_read("br-states.json", what = "sp")
-maindf = read.csv("mdf.csv", stringsAsFactors = F)
-timdf = read.csv("tdf.csv", stringsAsFactors = F)
-catdf = read.csv("cdf.csv", stringsAsFactors = F)
-geochoices = colnames(geodf)[-1]
+order_df = read.csv("final_order.csv", stringsAsFactors = F)
+time_df = read.csv("time_df.csv", stringsAsFactors = F)
+cat_df = read.csv("cat_df.csv", stringsAsFactors = F)
+geo_choices = colnames(geo_df)[-1]
 
 # Assigning variables
-sbin = c(0, 100000, 200000, 300000, 400000, 1000000, 2000000, 5000000, Inf)
-tbin = list(sbin, 1)
-ccc= aaa == "sales"
-tbin[[1]]
-ifelse(aaa == "sales", tbin[[1]], 9)
-?colorBin
+

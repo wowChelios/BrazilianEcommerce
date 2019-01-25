@@ -21,7 +21,7 @@ ui <- fluidPage(
                                 tabItems(
                                         tabItem(tabName = "geo",
                                                 fluidRow(
-                                                        box(selectizeInput("geoin", "Select Item to Display", geochoices),
+                                                        box(selectizeInput("geoin", "Select Item to Display", geo_choices),
                                                             leafletOutput("geo"),
                                                             width = "auto",
                                                             height = "100%")
@@ -30,9 +30,14 @@ ui <- fluidPage(
                                         tabItem(
                                                 tabName = "time",
                                                 fluidRow(
-                                                        box(htmlOutput("tim"),
+                                                        box(dateRangeInput("datein", "Select Range to Show Sales", 
+                                                                           start = head(time_df$purchase_date,1), 
+                                                                           end = tail(time_df$purchase_date, 1),
+                                                                           min = head(time_df$purchase_date,1),
+                                                                           max = tail(time_df$purchase_date, 1)),
+                                                            htmlOutput("tim"),
                                                             width = "auto",
-                                                            height = "800")
+                                                            height = "100%")
                                                 )
                                         ),
                                         tabItem(
@@ -59,26 +64,37 @@ ui <- fluidPage(
 server <- function(input, output, session) {
         bins = reactiveValues()
         
+# Filtering date range input
+        time_df1 = reactive({
+                req(input$datein)
+                
+                time_df %>%
+                        filter(purchase_date >= input$datein[1] & purchase_date <= input$datein[2])
+
+        })
+        
         observe({
                 if (input$geoin != "sales") {
                         bins$y = 9
                 } else {
                         bins$y = c(0, 100000, 200000, 300000, 400000, 1000000, 2000000, 5000000, Inf)
                 }
+                
+
         })
 
 # Graph for Map
         output$geo = renderLeaflet({
-                pal = colorBin("Greens",geodf[,input$geoin], bins = bins$y, pretty = F)
+                pal = colorBin("Greens",geo_df[,input$geoin], bins = bins$y, pretty = F)
                 labels = sprintf(
                         "<strong>%s</strong><br/><strong>Revenue:</strong> $%g BRL",
-                        states$nome, geodf[,input$geoin]
+                        states$nome, geo_df[,input$geoin]
                 ) %>% lapply(htmltools::HTML)
                 
                 geo = leaflet(states) %>%
                         addTiles() %>%
                         addPolygons(
-                                fillColor = ~pal(geodf[,input$geoin]),
+                                fillColor = ~pal(geo_df[,input$geoin]),
                                 weight = 2,
                                 opacity = 1,
                                 color = "white",
@@ -96,21 +112,21 @@ server <- function(input, output, session) {
                                         textsize = "15px",
                                         direction = "auto"))
                 geo %>% 
-                        addLegend(pal = pal, values = geodf[,input$geoin], opacity = 0.7, title = NULL, position = "bottomright")
+                        addLegend(pal = pal, values = geo_df[,input$geoin], opacity = 0.7, title = NULL, position = "bottomright")
                 })
 
 
 # Time analysis
         output$tim = renderGvis({
-                gvisLineChart(timdf, options = list(
-                        width = "auto", height = "800px"
+                gvisLineChart(time_df1(), options = list(
+                        width = "auto", height = "600px"
                 ))
         })
 
 
 # Categorical analysis
         output$cat = renderGvis(
-                gvisBarChart(catdf[,1:2], options = list(
+                gvisBarChart(cat_df[,1:2], options = list(
                         width = "auto", height = "800px", bar = "{groupWidth: '80%'}",
                         hAxis = "{title:'Sales', format: 'short', scaleType: 'log'}", 
                         animation = "{startup: true}"
@@ -120,7 +136,7 @@ server <- function(input, output, session) {
 
 # Data table
         output$dat = DT::renderDataTable({
-                datatable(maindf, rownames = F)
+                datatable(order_df, rownames = F)
         })
 }
 
