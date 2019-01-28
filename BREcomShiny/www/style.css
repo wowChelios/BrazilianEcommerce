@@ -1,0 +1,42 @@
+h1 {
+	font-family: Chalkboard SE;
+	font-weight: bold;
+	text-align: center;
+	text-shadow: 3px 2px #ffffff;
+	
+}
+
+h3 {
+	margin: 10px;
+}
+
+h2 {
+	font-family: Chalkboard;
+	text-align: center;
+}
+
+h4 {
+	text-align: left;
+	font-size: 20px;
+}
+
+div.boxes {
+	margin: 10px;
+	text-align: center;
+}
+
+div.intro {
+	padding: 30px;
+	text-align: center;
+}
+
+div.input {
+	margin: 3px;
+	padding: 10px;
+	text-align: center;
+}
+
+div.output {
+	margin: 3px;
+	padding: 5px;
+}

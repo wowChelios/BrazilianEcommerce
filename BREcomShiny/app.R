@@ -1,7 +1,8 @@
 
-ui <- fluidPage(
+ui <- fluidPage(theme = "style.css",
         shinyUI(
                 dashboardPage(
+                        skin = "green",
                         dashboardHeader(
                                 title = "Brazilian E-commerce"
                         ),
@@ -10,56 +11,75 @@ ui <- fluidPage(
                                         "Charlie Wang"
                                 ),
                                 sidebarMenu(
+                                        menuItem("Introduction", tabName = "intr", icon = icon("align-justify")),
                                         menuItem("Geographic", tabName = "geo", icon = icon("map")),
-                                        menuItem("Trends", tabName = "time", icon = icon("calendar-alt")),
-                                        menuItem("Categories", tabName = "cat", icon = icon("box")),
-                                        menuItem("Data", tabName = "dat", icon = icon("database"))
+                                        menuItem("Trends", tabName = "time", icon = icon("line-chart")),
+                                        menuItem("Categories", tabName = "cat", icon = icon("dashboard"))
                                 )
                         ),
                         dashboardBody(
                                 tags$style(type = "text/css", "#geo {height: calc(100vh - 80px) !important;}"),
                                 tabItems(
-                                        tabItem(tabName = "geo",
-                                                fluidRow(
-                                                        box(selectizeInput("geoin", "Select Item to Display", geo_choices),
-                                                            leafletOutput("geo"),
-                                                            width = "auto",
-                                                            height = "100%")
+                                        tabItem(tabName = "intr",
+                                                fluidRow(tags$div(class = "boxes",
+                                                        column(
+                                                                width = 12,tags$div(class = "intro",
+                                                                box(width = NULL, status = "success",
+                                                                        tags$h1("About This Project"),
+                                                                        tags$h3("Half the money I spend on advertising is wasted; the trouble is, I dont't know which half' -- John Wanamaker(1838-1922)"),
+                                                                        tags$h4(intro_str),
+                                                                        tags$h2("The Dataset"),
+                                                                        tags$h4(intrdata_str),
+                                                                        tags$img(src = "HRhd2Y0.png", width = 1200, height = 800))
+                                                                )
+                                                        ))
                                                 )
                                         ),
+                                        tabItem(tabName = "geo",
+                                                fluidRow(column(width = 9, tags$div(class = "output",
+                                                        box(status = "success",
+                                                            leafletOutput("geo", height = 800),
+                                                            width = NULL,
+                                                            height = "auto"))),
+                                                        column(width = 3,tags$div(class = "input",
+                                                               box(width = NULL, status = "warning",
+                                                                   selectizeInput("geoin", "Select to Display on Map", geo_choices))), tags$div(class = "input",
+                                                               box(width = NULL, status = "warning",tags$h3("Correlation Between Variables"),
+                                                                   dropdownButton(
+                                                                           tags$h3("List of Input"),
+                                                                           selectInput(inputId = 'xcol', label = 'X Variable', choices = xcol_choices, selected = xcol_choices[[1]]),
+                                                                           selectInput(inputId = 'ycol', label = 'Y Variable', choices = ycol_choices, selected = ycol_choices[[1]]),
+                                                                           circle = TRUE, status = "success", icon = icon("gear"), width = "250px",
+                                                                           tooltip = tooltipOptions(title = "Correlations")
+                                                                   ), htmlOutput("geoscat"))))
+                                                )
+                                        ),
+              
                                         tabItem(
                                                 tabName = "time",
-                                                fluidRow(
-                                                        box(dateRangeInput("datein", "Select Range to Show Sales", 
-                                                                           start = head(time_df$purchase_date,1), 
-                                                                           end = tail(time_df$purchase_date, 1),
-                                                                           min = head(time_df$purchase_date,1),
-                                                                           max = tail(time_df$purchase_date, 1)),
-                                                            htmlOutput("tim"),
-                                                            width = "auto",
-                                                            height = "100%")
-                                                )
+                                                fluidRow(column(width = 6, tags$div(class = "input", box(width = NULL, status = "warning",pickerInput(inputId = "trdcats", 
+                                                                                                               label = "Select Categories to Show", 
+                                                                                                               choices = trd_choices, selected = trd_choices[12],
+                                                                                                               options = list(`actions-box` = TRUE), 
+                                                                                                               multiple = TRUE)))),
+                                                         column(width = 6, tags$div(class = "input", box(width = NULL, status = "warning", dateRangeInput("datein", "Select Range to Show Sales", 
+                                                                                                                  start = head(time_df$purchase_date,1), 
+                                                                                                                  end = tail(time_df$purchase_date, 1),
+                                                                                                                  min = head(time_df$purchase_date,1),
+                                                                                                                  max = tail(time_df$purchase_date, 1))))), 
+                                                         column(width = 12, tags$div(class = "output",box(width = NULL, status = "success", htmlOutput("tim"))))
+                                                        )
                                         ),
                                         tabItem(
                                                 tabName = "cat",
-                                                fluidRow(
-                                                        box(pickerInput(inputId = "cats", 
-                                                                        label = "Select Categories to Show", 
-                                                                        choices = cats_choices, selected = cats_choices,
-                                                                        options = list(`actions-box` = TRUE), 
-                                                                        multiple = TRUE),
-                                                            selectInput("catvalue", "Select Value to Show", 
-                                                                        choices = catvalue_choices, selected = "total_sales"),
-                                                            htmlOutput("cat"),
-                                                            width = "auto",
-                                                            height = "800")
-                                                )
-                                        ),
-                                        tabItem(
-                                                tabName = "dat",
-                                                fluidRow(
-                                                        box(DT::dataTableOutput("dat"),
-                                                            width = "12")
+                                                fluidRow(column(width = 6, tags$div(class = "input", box(width = NULL, status = "warning", pickerInput(inputId = "cats", 
+                                                                                                                             label = "Select Categories to Show", 
+                                                                                                                             choices = cats_choices, selected = cats_choices,
+                                                                                                                             options = list(`actions-box` = TRUE), 
+                                                                                                                             multiple = TRUE) ))),
+                                                         column(width = 6, tags$div(class = "input", box(width = NULL, status = "warning", selectInput("catvalue", "Select Value to Show", 
+                                                                                                                             choices = catvalue_choices, selected = "total_sales")))),
+                                                         column(width = 12, tags$div(class = "output",box(width = NULL, status = "success", htmlOutput("cat"))))
                                                 )
                                         )
                                 )
@@ -73,11 +93,20 @@ server <- function(input, output, session) {
         labtxt = reactiveValues()
 
         
-# Filtering date range input
-        time_df1 = reactive({
-                req(input$datein)
+# Filtering inputs
+        geo_df1 = reactive({
+                req(input$xcol, input$ycol)
                 
-                time_df %>%
+                geo_df %>%
+                        select(input$xcol, input$ycol)
+        })
+        
+        cat_time_df1 = reactive({
+                req(input$datein)
+                req(input$trdcats)
+                
+                cat_time_df %>%
+                        select(purchase_date, input$trdcats) %>%
                         filter(purchase_date >= input$datein[1] & purchase_date <= input$datein[2])
 
         })
@@ -85,8 +114,9 @@ server <- function(input, output, session) {
         cat_df1 = reactive({
                 req(input$catvalue)
                 cat_df %>%
-                        filter(product_category %in% input$cats) %>%
-                        select(product_category, input$catvalue)
+                        filter(category %in% input$cats) %>%
+                        select(category, input$catvalue) %>%
+                        arrange(desc(!!input$catvalue))
                         
         })
         
@@ -143,12 +173,19 @@ server <- function(input, output, session) {
                 geo %>% 
                         addLegend(pal = pal, values = geo_df[,input$geoin], opacity = 0.7, title = NULL, position = "bottomright")
                 })
+        
+#Geo scatter plot 
+        output$geoscat = renderGvis({
+                gvisScatterChart(geo_df1(), options = list(
+                        width = "500px", height = "500px", legend = "none"
+                ))
+        })
 
 
 # Time analysis
         output$tim = renderGvis({
-                gvisLineChart(time_df1(), options = list(
-                        width = "automatic", height = "600px", legend = "none", vAxis = "{title: 'Sales (in $BRL)', format: 'short'}",
+                gvisLineChart(cat_time_df1(), options = list(
+                        width = "automatic", height = "800px", vAxis = "{title: 'Sales (in $BRL)', format: 'short'}",
                         hAxis = "{title: 'Date', format: 'MMM d, y'}"
                 ))
         })
@@ -157,19 +194,13 @@ server <- function(input, output, session) {
 # Categorical analysis
         output$cat = renderGvis(
                 gvisBarChart(cat_df1(), options = list(
-                        width = "automatic", height = "800", bar = "{groupWidth: '80%'}",
-                        hAxis = "{title:'Sales', format: 'short', scaleType: 'log'}", 
+                        width = "automatic", height = "800px", bar = "{groupWidth: '80%'}",
+                        hAxis = "{title:'Sales (in $BRL)', format: 'short', scaleType: 'log'}", 
                         animation = "{startup: true}", legend = "none"
                 ))
         )
 
-
-# Data table
-        output$dat = DT::renderDataTable({
-                datatable(order_df, rownames = F)
-        })
 }
-
 
 shinyApp(ui = ui, server = server)
 
