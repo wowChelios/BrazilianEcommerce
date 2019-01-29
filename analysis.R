@@ -25,7 +25,6 @@ categorynames = read.csv('brazilian-ecommerce/product_category_name_translation.
                          stringsAsFactors = F)
 
 
-
 # Cleaning category names
 cleaned_cat = products %>%
         select(product_id, product_category_name) %>%
@@ -137,7 +136,35 @@ geo_df = final_order %>%
                 avg_delidays = round(mean(delivery_days), 2),
                 avg_review = round(mean(review_score), 3),
                 avg_diffestdel = round(mean(diff_estdel), 2)
-        )
+        ) %>%
+        mutate(state = case_when(state == "AC" ~ "Acre",
+                                 state == "AL" ~ "Alagoas",
+                                 state == "AP" ~ "Amapá",
+                                 state == "AM" ~ "Amazonas",
+                                 state == "BA" ~ "Bahia", 
+                                 state == "CE" ~ "Ceará", 
+                                 state == "DF" ~ "Distrito Federal",
+                                 state == "ES" ~ "Espírito Santo",
+                                 state == "GO" ~ "Goiás",
+                                 state == "MA" ~ "Maranhão", 
+                                 state == "MT" ~ "Mato Grosso",
+                                 state == "MS" ~ "Mato Grosso do Sul",
+                                 state == "MG" ~ "Minas Gerais",
+                                 state == "PA" ~ "Pará",
+                                 state == "PB" ~ "Paraíba",
+                                 state == "PR" ~ "Paraná",
+                                 state == "PE" ~ "Pernambuco",
+                                 state == "PI" ~ "Piauí",
+                                 state == "RJ" ~ "Rio de Janeiro",
+                                 state == "RN" ~ "Rio Grande do Norte",
+                                 state == "RS" ~ "Rio Grande do Sul",
+                                 state == "RO" ~ "Rondônia",
+                                 state == "RR" ~ "Roraima",
+                                 state == "SC" ~ "Santa Catarina",
+                                 state == "SP" ~ "São Paulo",
+                                 state == "SE" ~ "Sergipe",
+                                 state == "TO" ~ "Tocantins",
+                                 TRUE ~ as.character(state)))
 
 # Generating analysis by time
 time_df = final_order %>%
@@ -218,12 +245,13 @@ cat_time_df = final_order %>%
         summarise(sales = sum(value)) %>%
         bind_rows(time_df2) %>%
         spread(key = "category", value = "sales")
+
        
 # Export dfs
 setwd('~//Desktop/QifanWorkspace/R/BrazilianEcommerce')
 
-write.csv(final_order, file = "BREcomShiny/final_order.csv", row.names = F)
-write.csv(geo_df, file = "BREcomShiny/geo_df.csv", row.names = F)
-write.csv(time_df, file = "BREcomShiny/time_df.csv", row.names = F)
-write.csv(cat_df, file = "BREcomShiny/cat_df.csv", row.names = F)
-write.csv(cat_time_df, file = "BREcomShiny/cat_time_df.csv", row.names = F)
+write.csv(final_order, file = "BREcomShiny/data/final_order.csv", row.names = F)
+write.csv(geo_df, file = "BREcomShiny/data/geo_df.csv", row.names = F)
+write.csv(time_df, file = "BREcomShiny/data/time_df.csv", row.names = F)
+write.csv(cat_df, file = "BREcomShiny/data/cat_df.csv", row.names = F)
+write.csv(cat_time_df, file = "BREcomShiny/data/cat_time_df.csv", row.names = F)
