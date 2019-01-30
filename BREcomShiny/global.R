@@ -1,4 +1,3 @@
-setwd('~/Desktop/QifanWorkspace/R/BrazilianEcommerce/BREcomShiny')
 library(shiny)
 library(shinydashboard)
 library(tidyverse)
@@ -14,7 +13,6 @@ library(shinyWidgets)
 # loading dfs
 geo_df = read.csv("data/geo_df.csv", stringsAsFactors = F)
 states = geojsonio::geojson_read("data/br-states.json", what = "sp")
-order_df = read.csv("data/final_order.csv", stringsAsFactors = F)
 time_df = read.csv("data/time_df.csv", stringsAsFactors = F)
 cat_df = read.csv("data/cat_df.csv", stringsAsFactors = F)
 cat_time_df = read.csv("data/cat_time_df.csv", stringsAsFactors = F)

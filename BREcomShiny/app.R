@@ -38,8 +38,8 @@ ui <- fluidPage(theme = "style.css",
                                                                         tags$h4(intrdata_str),
                                                                         tags$img(
                                                                                 src = "HRhd2Y0.png",
-                                                                                width = 1400,
-                                                                                height = 800
+                                                                                width = 1100,
+                                                                                height = 660
                                                                         )
                                                                 )
                                                                 
@@ -60,7 +60,7 @@ ui <- fluidPage(theme = "style.css",
                                                                 column(
                                                                         width = 3,
                                                                         box(
-                                                                                title = "Select to Display on Map",
+                                                                                title = "Select to Plot",
                                                                                 solidHeader = T,
                                                                                 width = NULL,
                                                                                 status = "info",
@@ -114,10 +114,10 @@ ui <- fluidPage(theme = "style.css",
                                                                 column(
                                                                         width = 9,
                                                                         box(
-                                                                                title = "Trend Line Chart Output",
+                                                                                title = "Trends",
                                                                                 solidHeader = T,
                                                                                 width = NULL,
-                                                                                height = 1200,
+                                                                                height = 1000,
                                                                                 status = "info",
                                                                                 htmlOutput("tim")
                                                                         )
@@ -125,7 +125,7 @@ ui <- fluidPage(theme = "style.css",
                                                                 column(
                                                                         width = 3,
                                                                         box(
-                                                                                title = "Select Range to Show Sales",
+                                                                                title = "Date Range Input",
                                                                                 solidHeader = T,
                                                                                 width = NULL,
                                                                                 status = "info",
@@ -142,7 +142,7 @@ ui <- fluidPage(theme = "style.css",
                                                                 column(
                                                                         width = 3,
                                                                         box(
-                                                                                title = "Select Categories to Show",
+                                                                                title = "Categories To Plot",
                                                                                 solidHeader = T,
                                                                                 width = NULL,
                                                                                 status = "info",
@@ -155,11 +155,18 @@ ui <- fluidPage(theme = "style.css",
                                                                                 )
                                                                         ),
                                                                         box(
+                                                                                title = "Category Input",
+                                                                                solidHeader = T,
+                                                                                width = NULL,
+                                                                                status = "warning",
+                                                                                selectInput("catsfortable", label = NULL, trd_choices)
+                                                                        ),
+                                                                        box(
                                                                                 title = "Data",
                                                                                 solidHeader = T,
                                                                                 collapsible = T,
                                                                                 width = NULL,
-                                                                                status = "info",
+                                                                                status = "warning",
                                                                                 DT::dataTableOutput({
                                                                                         "trdtable"
                                                                                 })
@@ -171,10 +178,10 @@ ui <- fluidPage(theme = "style.css",
                                                                 column(
                                                                         width = 9,
                                                                         box(
-                                                                                title = "Bar Chart Output",
+                                                                                title = "Bar Chart",
                                                                                 solidHeader = T,
                                                                                 width = NULL,
-                                                                                height = 1200,
+                                                                                height = 1000,
                                                                                 status = "info",
                                                                                 htmlOutput("cat")
                                                                         )
@@ -275,16 +282,16 @@ server <- function(input, output, session) {
                 
         })
         
-        # Reactive Table for Categories Trend table
+        # Reactive Data for Categories Trend table
         cat_time_table = reactive({
                 req(input$datein)
-                req(input$trdcats)
-
+                req(input$catsfortable)
+                
                 
                 cat_time_df %>%
                         filter(purchase_date >= input$datein[1] &
                                        purchase_date <= input$datein[2]) %>%
-                        select(Date = purchase_date, input$trdcats)
+                        select(Date = purchase_date, input$catsfortable)
         })
         
         # Reactive Data For Bar Chart and Table
@@ -300,7 +307,7 @@ server <- function(input, output, session) {
         # Switching labels for map
         observe({
                 if (input$geoin == "sales") {
-                        labtxt$x = "<strong>%s</strong><br/><strong>Sales:</strong> $%g BRL"
+                        labtxt$x = "<strong>%s</strong><br/><strong>Sales:</strong> $%s BRL"
                         bins$y = c(
                                 0,
                                 50000,
@@ -314,19 +321,30 @@ server <- function(input, output, session) {
                                 Inf
                         )
                 } else if (input$geoin == "avg_shcsratio") {
-                        labtxt$x = "<strong>%s</strong><br/><strong>Ratio:</strong> %g"
+                        labtxt$x = "<strong>%s</strong><br/><strong>Ratio:</strong> %s"
                         bins$y = 9
                 } else if (input$geoin == "avg_review") {
-                        labtxt$x = "<strong>%s</strong><br/><strong>Score:</strong> %g"
+                        labtxt$x = "<strong>%s</strong><br/><strong>Score:</strong> %s"
                         bins$y = 9
                 } else if (input$geoin %in% c("avg_delidays", "avg_diffestdel")) {
-                        labtxt$x = "<strong>%s</strong><br/>%g Days"
+                        labtxt$x = "<strong>%s</strong><br/>%s Days"
                         bins$y = 9
                 } else {
-                        labtxt$x = "<strong>%s</strong><br/>$%g BRL"
+                        labtxt$x = "<strong>%s</strong><br/>$%s BRL"
                         bins$y = 9
                 }
                 
+                c = input$trdcats
+                
+                if (is.null(c))
+                        c = character(0)
+                
+                updateSelectInput(
+                        session,
+                        "catsfortable",
+                        choices = c,
+                        selected = head(c, 1)
+                )
                 
         })
         
@@ -337,7 +355,12 @@ server <- function(input, output, session) {
                                bins = bins$y,
                                pretty = F)
                 labels = sprintf(labtxt$x,
-                                 states$nome, geo_df[, input$geoin]) %>% lapply(htmltools::HTML)
+                                 states$nome,
+                                 format(
+                                         geo_df[, input$geoin],
+                                         scientific = F,
+                                         big.mark = ","
+                                 )) %>% lapply(htmltools::HTML)
                 
                 geo = leaflet(states) %>%
                         addTiles() %>%
@@ -377,12 +400,14 @@ server <- function(input, output, session) {
         
         #Geo scatter plot
         output$geoscat = renderGvis({
-                gvisScatterChart(geo_df_scat(),
-                                 options = list(
-                                         width = "300px",
-                                         height = "300px",
-                                         legend = "none"
-                                 ))
+                gvisScatterChart(
+                        geo_df_scat(),
+                        options = list(
+                                width = "300px",
+                                height = "300px",
+                                legend = "none"
+                        )
+                )
         })
         
         # Printing correlation
@@ -392,7 +417,7 @@ server <- function(input, output, session) {
         
         # Geo Data Output
         output$table = renderTable({
-                head(geo_df_table(), 10)
+                head(geo_df_table(), 6)
         },
         striped = T,
         spacing = 'l',
@@ -407,7 +432,7 @@ server <- function(input, output, session) {
                         cat_time_df_line(),
                         options = list(
                                 width = "automatic",
-                                height = "1000px",
+                                height = "800px",
                                 vAxis = "{title: 'Sales (in $BRL)', format: 'short'}",
                                 hAxis = "{title: 'Date', format: 'MMM d, y'}",
                                 animation = "{startup: true}"
@@ -420,7 +445,6 @@ server <- function(input, output, session) {
                 datatable(cat_time_table(), rownames = F)
         })
         
-        ?renderDataTable
         
         
         # Categories Bar Chart
@@ -428,7 +452,7 @@ server <- function(input, output, session) {
                 cat_df_bar(),
                 options = list(
                         width = "automatic",
-                        height = "1000px",
+                        height = "800px",
                         bar = "{groupWidth: '80%'}",
                         hAxis = "{title:'Sales (in $BRL)', format: 'short', scaleType: 'log'}",
                         animation = "{startup: true}",
